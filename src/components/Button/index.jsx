@@ -9,11 +9,14 @@ const ButtonStyle = styled.button`
 	color: white;
 	background: black;
 
-	padding: 5px 28px;
-
+	padding: 16px 28px 14px;
 	border-radius: 5px;
 	transition: 0.3s;
 	cursor: pointer;
 `;
 
-export const Button = ({ onClick, text = '' }) => <ButtonStyle onClick={() => onClick()}>{text}</ButtonStyle>;
+export const Button = ({ onClick, type = 'button', children }) => (
+	<ButtonStyle type={type} onClick={() => onClick()}>
+		{children}
+	</ButtonStyle>
+);

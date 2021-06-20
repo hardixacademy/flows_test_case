@@ -8,7 +8,3 @@ export const H2 = styled.h2`
 	font-size: 32px;
 	line-height: 130%;
 `;
-export const H3 = styled.h3`
-	font-size: 16px;
-	font-weight: 400;
-`;

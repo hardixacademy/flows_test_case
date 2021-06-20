@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const P1 = styled.p`
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 130%;
 	opacity: 0.8;
 `;
