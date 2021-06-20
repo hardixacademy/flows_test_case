@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
+        background-color: rgba(22,22,22, 0.04);
         color: #161616;
     }
 `
