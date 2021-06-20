@@ -22,9 +22,17 @@ export const deleteItem = async (id) => {
     }
 }
 
-export const editItem = async (id) => {
+export const editItem = async (id, rowId, data) => {
     try {
-        await axios.put(`https://60cc74ec71b73400171f7ce1.mockapi.io/api/3001/items/${id}`, { title: 'edited', text: 'edited' });
+        await axios.put(`https://60cc74ec71b73400171f7ce1.mockapi.io/api/3001/items/${id}/head/${rowId}`, { company: data.company, name: data.name });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const editItemRow = async (id, rowId, data) => {
+    try {
+        await axios.put(`https://60cc74ec71b73400171f7ce1.mockapi.io/api/3001/items/${id}/body/${rowId}`, { car: data.car, color: data.color, price: data.price });
     } catch (error) {
         console.error(error);
     }
@@ -48,7 +56,13 @@ export const addItem = async ({ company, name }) => {
     }
 }
 
-// import axios from 'axios';
 
+export const addItemRow = async (id, data) => {
+    try {
+        await axios.post(`https://60cc74ec71b73400171f7ce1.mockapi.io/api/3001/items/${id}/body`, { car: data.car, color: data.color, price: data.price });
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 

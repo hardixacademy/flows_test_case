@@ -70,6 +70,7 @@ const TableContent = styled.div`
 
 	.row{
 		display: flex;
+		position: relative;
 			
 		&:not(:first-child){
 			border-top: 1px solid rgba(22,22,22, 0.4);
@@ -113,10 +114,24 @@ const TableContent = styled.div`
 		cursor: pointer;
 		transition: 0.2s;
 
-		&:first-child{
+		&:not(:last-child){
 			margin-right: 10px;
 		}
 
+		&:hover{
+			opacity: 0.5;
+		}
+	}
+
+	.edit{
+		display: block;
+		position: absolute;
+		right: 0;
+		background-color: transparent;
+		padding: 10px;
+		border: none;
+		cursor: pointer;
+		transition: 0.2s;
 		&:hover{
 			opacity: 0.5;
 		}
@@ -125,15 +140,36 @@ const TableContent = styled.div`
 
 
 export const DropdownComponent = ({ data }) => {
-	const { deleteItem, editItem, getPosts, setPosts } = useContext(Context)
+	const { deleteItem, editItem, getPosts, setPosts, editItemRow, addItemRow } = useContext(Context)
 
 	const deletePostHandler = async (id) => {
 		await deleteItem(id)
 		await getPosts(setPosts)
 	}
 
-	const editPostHandler = async (id) => {
-		await editItem(id)
+	const editPostHandler = async (id, rowId) => {
+		const company = prompt('Company');
+		const name = prompt('Name');
+
+		await editItem(id, rowId, { company, name })
+		await getPosts(setPosts)
+	}
+
+	const editRowHandler = async (id, rowId) => {
+		const car = prompt('car');
+		const color = prompt('color');
+		const price = prompt('price');
+
+		await editItemRow(id, rowId, { car, color, price })
+		await getPosts(setPosts)
+	}
+
+	const addRowHandler = async (id) => {
+		const car = prompt('car');
+		const color = prompt('color');
+		const price = prompt('price');
+
+		await addItemRow(id, { car, color, price })
 		await getPosts(setPosts)
 	}
 
@@ -144,10 +180,12 @@ export const DropdownComponent = ({ data }) => {
 
 		if (!parent.classList.contains('expanded')) {
 			parent.classList.add('expanded');
+			parent.setAttribute("aria-expanded", "true")
 			content.style.maxHeight = content.scrollHeight + 'px';
 		}
 		else {
 			parent.classList.remove('expanded');
+			parent.setAttribute("aria-expanded", "false")
 			content.style.maxHeight = '0px';
 		}
 	}
@@ -155,7 +193,7 @@ export const DropdownComponent = ({ data }) => {
 	return (
 		<DropdownWrapper>
 			{data && data.map(el => (
-				<div key={el.id} className="item">
+				<div key={el.id} aria-expanded="false" className="item">
 					<TableHead onClick={expandHandler}>
 						{el.head.map(item => (
 							<div className="row" key={item.id}>
@@ -177,13 +215,14 @@ export const DropdownComponent = ({ data }) => {
 								<P2>{item.car}</P2>
 								<P2>{item.color}</P2>
 								<P2>{item.price}</P2>
-								<button><img src="img/edit_small.svg" alt="delete" /></button>
+								<button onClick={() => editRowHandler(el.id, item.id)} className="edit"><img src="/public/img/edit_small.svg" alt="edit row" /></button>
 							</div>
 						))}
 
 						<div className="actions">
+							<button className="action" onClick={() => addRowHandler(el.id)}><img src="img/add.svg" alt="add row" /></button>
 							<button className="action" onClick={() => deletePostHandler(el.id)}><img src="img/trash.svg" alt="delete" /></button>
-							<button className="action" onClick={() => editPostHandler(el.id)}><img src="img/edit.svg" alt="edit" /></button>
+							<button className="action" onClick={() => editPostHandler(el.id, el.head[0].id)}><img src="img/edit.svg" alt="edit" /></button>
 						</div>
 					</TableContent>
 				</div>
