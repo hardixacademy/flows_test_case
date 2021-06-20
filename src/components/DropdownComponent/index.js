@@ -13,14 +13,17 @@ const DropdownWrapper = styled.div`
 
 		&.expanded{
 			.arrow{
-					span{
-						&:first-of-type {
+				span{
+					&:first-of-type {
 						transform: rotate(-45deg);
-						}
-						&:last-of-type {
-						transform: rotate(45deg);
-						}
 					}
+					&:last-of-type {
+						transform: rotate(45deg);
+					}
+				}
+			}
+			.circle{
+				opacity: 0;
 			}
 		}
 	}
@@ -28,7 +31,6 @@ const DropdownWrapper = styled.div`
 	.content{
 		max-height: 0;
 		transition: all 0.45s ease;
-		/* padding: 0  0  0 20px; */
 	}
 
 	.edit{
@@ -36,7 +38,7 @@ const DropdownWrapper = styled.div`
 		right: 20px;
 
 		display: block;
-		background-color: rgba(22,22,22, 0.07);
+		background-color: rgba(22,22,22, 0.3);
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
@@ -117,6 +119,13 @@ const TableRow = styled.div`
 		border-bottom: 1px solid #eee;
 		transition: 0.3s;
 
+		&:hover{
+			.circle{
+				opacity: 1;
+				width: 110%;
+			}
+		}
+
 		&:last-child{
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
@@ -181,6 +190,18 @@ const TableRow = styled.div`
 				transform: rotate(-45deg);
 				}
 			}
+		}
+
+		.circle{
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 0px;
+			height: 100%;
+			background-color: rgba(22,22,22, 0.03);
+			transition: all 0.8s ease;
+			opacity: 0;
+			pointer-events: none;
 		}
 
 		.color{
@@ -295,6 +316,7 @@ export const DropdownComponent = ({ data }) => {
 							<div className="block"></div>
 							{/* <img src="img/arrow.svg" className='arrow' alt="arrow" /> */}
 							<div class="arrow-wrapper"><span class="arrow"><span></span><span></span></span></div>
+							<div className="circle"></div>
 						</TableRow>
 					))}
 
@@ -352,8 +374,8 @@ export const DropdownComponent = ({ data }) => {
 
 export const Edit = () => {
 	return <svg x="0px" y="0px"
-		width="24" height="24"
-		viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" stroke-width="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" ><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#222"><path d="M35.83333,21.5c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v7.16667v7.16667v86c0,7.90483 6.4285,14.33333 14.33333,14.33333h80.0651l-14.33333,-14.33333h-65.73177v-86h100.33333l-0.014,51.39844l14.34733,14.33333v-65.73177v-7.16667v-7.16667c0,-7.91917 -6.41417,-14.33333 -14.33333,-14.33333zM50.16667,71.66667v14.33333h14.33333v-14.33333zM78.83333,71.66667v14.33333h43v-14.33333zM50.16667,100.33333v14.33333h14.33333v-14.33333zM78.83333,100.33333v14.33333h14.33333v-14.33333zM107.5,107.5v14.33333l36.88314,36.88314l14.33333,-14.33333l-36.88314,-36.88314zM163.78353,149.4502l-14.33333,14.33333l7.16667,7.16667c1.3975,1.3975 3.66956,1.3975 5.06706,0l9.26628,-9.26628c1.3975,-1.40467 1.3975,-3.66956 0,-5.06706z"></path></g></g></svg>
+		width="30" height="30"
+		viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDashoffset="0" ><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M130.88125,17.2c-2.93403,0 -5.86843,1.12051 -8.10729,3.35938l-13.84062,13.84063l28.66667,28.66667l13.84062,-13.84063c4.47773,-4.47773 4.47773,-11.73685 0,-16.21458l-12.45208,-12.45208c-2.23887,-2.23887 -5.17326,-3.35937 -8.10729,-3.35937zM97.46667,45.86667l-67.31068,67.31067c0,0 5.26186,-0.47147 7.22266,1.48933c1.9608,1.9608 0.34669,14.792 2.75469,17.2c2.408,2.408 15.15831,0.71299 16.98724,2.54192c1.82894,1.82893 1.70209,7.43542 1.70209,7.43542l67.31067,-67.31067zM22.93333,131.86667l-5.40859,15.31875c-0.21262,0.60453 -0.32239,1.24042 -0.32474,1.88125c0,3.16643 2.5669,5.73333 5.73333,5.73333c0.64083,-0.00235 1.27672,-0.11212 1.88125,-0.32474c0.0187,-0.00737 0.03737,-0.01483 0.05599,-0.02239l0.14557,-0.04479c0.01122,-0.00743 0.02242,-0.01489 0.03359,-0.0224l15.08359,-5.31901l-8.6,-8.6z"></path></g></g></svg>
 }
 
 
