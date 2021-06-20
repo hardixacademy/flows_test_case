@@ -215,7 +215,7 @@ export const DropdownComponent = ({ data }) => {
 								<P2>{item.car}</P2>
 								<P2>{item.color}</P2>
 								<P2>{item.price}</P2>
-								<button onClick={() => editRowHandler(el.id, item.id)} className="edit"><img src="/public/img/edit_small.svg" alt="edit row" /></button>
+								<button onClick={() => editRowHandler(el.id, item.id)} className="edit"><img src="img/edit_small.svg" alt="edit row" /></button>
 							</div>
 						))}
 
