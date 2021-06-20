@@ -1,4 +1,4 @@
-# HedgeFlows Test Case
+# Test Case
 
 ## Available Scripts
 
