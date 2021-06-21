@@ -116,6 +116,10 @@ export const TableRow = styled.div`
 			background-color: rgba(22,22,22, 0.03);
 		}
 
+		&.pointer{
+			cursor: pointer;
+		}
+
 		.block{
 			flex: 1;
 			padding-right: 10px;

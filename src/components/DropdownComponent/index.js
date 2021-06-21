@@ -53,7 +53,7 @@ export const DropdownComponent = ({ data }) => {
 			parent.classList.add('expanded');
 			target.classList.add('dark');
 			parent.setAttribute("aria-expanded", "true")
-			content.style.maxHeight = content.scrollHeight + 'px';
+			content.style.maxHeight = '100%';
 			children.forEach(element => {
 				element.classList.add('expanded');
 			})
@@ -80,7 +80,7 @@ export const DropdownComponent = ({ data }) => {
 			{data && data.map(el => (
 				<div key={el.id} aria-expanded="false" className="item">
 					{el.head.map(item => (
-						<TableRow onClick={expandHandler} key={item.id}>
+						<TableRow className="pointer" onClick={expandHandler} key={item.id}>
 							<div className="block">{item.seller}</div>
 							<div className="block">{item.company}</div>
 							<div className="block">Zip: {item.address}</div>
