@@ -10,4 +10,6 @@ import { Button } from './Button'
 import { DropdownComponent } from './DropdownComponent'
 import { FormComponent } from './FormComponent'
 
-export { GlobalStyle, H1, H2, P1, P2, Container, Button, DropdownComponent, FormComponent }
+import { Edit, Add, Delete, EditBig } from './Svgs'
+
+export { GlobalStyle, H1, H2, P1, P2, Container, Button, DropdownComponent, FormComponent, Edit, Add, Delete, EditBig }

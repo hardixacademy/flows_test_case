@@ -28,7 +28,7 @@ export const FormComponent = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        await addItem({ company: e.target.company.value, name: e.target.name.value })
+        await addItem({ company: e.target.company.value, name: e.target.name.value, address: e.target.address.value })
         await getPosts(setPosts)
     };
 
@@ -43,6 +43,10 @@ export const FormComponent = () => {
                 <FormRow>
                     <P2 as='label' htmlFor="name">Name</P2>
                     <Input id="name" type="text" required />
+                </FormRow>
+                <FormRow>
+                    <P2 as='label' htmlFor="address">Zip code</P2>
+                    <Input id="address" type="text" required />
                 </FormRow>
                 <Button type={'submit'} onClick={() => console.log("add")}>Add post</Button>
             </form>
