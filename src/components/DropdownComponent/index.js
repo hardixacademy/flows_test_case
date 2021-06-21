@@ -53,7 +53,7 @@ export const DropdownComponent = ({ data }) => {
 			parent.classList.add('expanded');
 			target.classList.add('dark');
 			parent.setAttribute("aria-expanded", "true")
-			content.style.maxHeight = '100%';
+			content.style.maxHeight = content.scrollHeight + 'px';
 			children.forEach(element => {
 				element.classList.add('expanded');
 			})
@@ -134,12 +134,12 @@ export const DropdownComponent = ({ data }) => {
 
 						<TableRow className='normal-padding'>
 							<div className="actions">
-								<button style={{ color: "#3d5af1" }} onClick={() => editPostHandler(el.id, el.head[0].id)} className="action">
-									Edit item head <EditBig fill={'#3d5af1'} />
+								<button style={{ color: "#17b978" }} onClick={() => editPostHandler(el.id, el.head[0].id)} className="action">
+									Edit item head <EditBig fill={'#17b978'} />
 								</button>
-								<button style={{ color: "#17b978" }} onClick={() => addRowHandler(el.id)} className="action">
-									Add item row <Add fill={'#17b978'} />
-								</button>
+								{/* <button style={{ color: "#3d5af1" }} onClick={() => addRowHandler(el.id)} className="action">
+									Add item row <Add fill={'#3d5af1'} />
+								</button> */}
 								<button style={{ color: "#ff304f" }} onClick={() => deletePostHandler(el.id)} className="action">
 									Delete item <Delete fill={'#ff304f'} />
 								</button>
